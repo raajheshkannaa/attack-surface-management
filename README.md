@@ -1,5 +1,5 @@
 # AWS Attack Surface Management
-Continuous AWS Attack Surface Discovery of external facing services and Scanning using Nmap. If you look at this in the right angle :stuck_out_tongue:, technically this is an External Vulnerability Analysis at scale in a tight budget.
+Continuous AWS Attack Surface Discovery of external facing services and Scanning using Nmap & Vulners' scripts. If you look at this in the right angle :stuck_out_tongue:, technically this is an External Vulnerability Analysis at scale in a tight budget.
 
 ## Infrastructure
 The infrastructure for this project is built with Cloud Development Kit or CDK. The primary reason is the self mutating capability of CDK Pipelines, secondary because the source for AAS Management is built with Python, building Infrastructure in the same language is a huge plus. If you don't have CDK setup locally already before deployment, please refer to the [Official CDK page](https://github.com/aws/aws-cdk) or install by running below command in a terminal.
