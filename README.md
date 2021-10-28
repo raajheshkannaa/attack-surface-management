@@ -37,10 +37,6 @@ The infrastructure for this project is built with Cloud Development Kit or CDK. 
 * Add capability to store nmap scan results to a S3 bucket, for nmap diffs, so that only changes are reported or notified.
 * Add capability to store IP Addresses and open ports information in a DynamoDB Table, so that this informaiton is looked up before notifications, this way same alerts are not sent again. -- Done
 
-## Advanced Architectures
-* This setup could be extended to work with industry leading vulnerability management tools such as Rapid7 InsightVM or Qualys, instead of using Nmap for scanning.
-* The results could be fed into a SIEM such as Sumologic for further analysis and dashboarding capabilities and further more invoke Security Operations playbooks and detection notifications from Sumo with its integration with Slack and PagerDuty.
-
 ## Why not
 * Some of the questions I think of, why not just use AWS Inspector's Network Reachability module to help in identifying the open ports. 
 The answer is that, it only helps in the case of EC2 instances, the same couldn't be used for public RDS instances or Elasticsearch instances.
