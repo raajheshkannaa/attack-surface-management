@@ -31,9 +31,10 @@ The infrastructure for this project is built with Cloud Development Kit or CDK. 
 
 ## Usage
 > git clone https://github.com/raajheshkannaa/attack-surface-management
-* Open config.py and update `AUTOMATION_ACCOUNT` and `HOOK_URL`.
+* Open config.py and update `AUTOMATION_ACCOUNT`, `ORG_ACCOUNT` and `HOOK_URL`.
 * Automation account is the central account where the `Hub` IAM role with trust relationships' with rest of the fleet accounts using `Spoke` IAM role is already established. 
 **Note**: if you are using your own IAM role setup, please update the pipeline stack accordingly.
+* Organiztion account is the billing account id.
 * HOOK_URL is the slack hook url of the channel to which messages will be post.
 * Once updated, run `cdk ls`, this should list the stacks which will deployed. In our case it's the pipeline stack.
 * Assuming, automation account credentials are setup in a terminal using `export AWS_PROFILE=aws-automation-creds`, deploy the stack using `cdk deploy`.
