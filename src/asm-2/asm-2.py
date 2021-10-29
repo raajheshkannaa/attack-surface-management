@@ -1,9 +1,6 @@
 
 '''
-This is an ugly script. Please feel free to clear up and help build a better script by contributing to the code in github. Thank You.
-
-Objective is to traverse all and any AWS Service accross all our AWS Accounts which is capable of having an external IP Address or an entity which
-could be reached from the internet is acquired.
+Objective is to traverse all and any AWS Service accross all our AWS Accounts which is capable of having an external IP Address or an entity which could be reached from the internet is acquired.
 
 AWS Services Covered
 * Beanstalk
@@ -15,7 +12,6 @@ AWS Services Covered
 * Elasticsearch
 * Cloudfront
 * Lightsail
-
 '''
 from time import sleep
 from datetime import date
@@ -268,8 +264,6 @@ def get_redshift_ip_list(session):
 				for cluster in clusters:
 					public = cluster['PubliclyAccessible'] # This means the cluster is publicly available
 					# However we are going to process this information regardless of whether this cluster is public
-					# and still send this info to Qualys for a scan. 
-					# Cos this would be bring in an asset into Qualys, which means we have Redshift setup
 					endpoint = cluster['Endpoint']
 					nodes = cluster['ClusterNodes']
 					try:
