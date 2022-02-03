@@ -1,19 +1,20 @@
-from typing_extensions import runtime
 from aws_cdk import (
 	aws_iam as iam,
 	aws_lambda as lmb,
 	aws_events as events,
 	aws_events_targets as targets,
 	aws_ec2 as ec2,
-	core
+	Duration
 )
 
+import aws_cdk as cdk
+from constructs import Construct
 from os import getcwd
-from config import AUTOMATION_ACCOUNT
+from ..config import AUTOMATION_ACCOUNT
 
-class ASMStack(core.Stack):
+class ASMStack(cdk.Stack):
 
-	def __init__(self, scope: core.Construct, construct_id: str, **kwargs) -> None:
+	def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
 		super().__init__(scope, construct_id, **kwargs)
 
 		# Depends on the `Hub` IAM ROLE present in the Security or Automation Account.
@@ -48,7 +49,7 @@ class ASMStack(core.Stack):
 			code=lmb.Code.asset('src/asm-1'),
 			runtime=lmb.Runtime.PYTHON_3_9,
 			handler='asm-1.main',
-			timeout=core.Duration.seconds(900),
+			timeout=Duration.seconds(900),
 			memory_size=128,
 			role=src_role,
 			function_name='asm-1',
@@ -61,7 +62,7 @@ class ASMStack(core.Stack):
 			code=lmb.Code.asset('src/asm-2'),
 			runtime=lmb.Runtime.PYTHON_3_9,
 			handler='asm-2.main',
-			timeout=core.Duration.seconds(900),
+			timeout=Duration.seconds(900),
 			memory_size=128,
 			role=src_role,
 			function_name='asm-2',
@@ -74,7 +75,7 @@ class ASMStack(core.Stack):
 		asm3 = lmb.DockerImageFunction(
 			self, 'asm-3',
 			code=lmb.DockerImageCode.from_image_asset(dockerfile),
-			timeout=core.Duration.seconds(900),
+			timeout=Duration.seconds(900),
 			memory_size=128,
 			role=src_role,
 			function_name='asm-3',
